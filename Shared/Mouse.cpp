@@ -5,6 +5,12 @@ Mouse::Mouse() : symbol_(MOUSE), x_(0), y_(0), alive_(true), escaped_(false), mo
 	position_in_middle_of_grid();
 }
 
+void Mouse::position_in_middle_of_grid()
+{
+	x_ = SIZE / 2;
+	y_ = SIZE / 2;
+}
+
 const int Mouse::get_x()
 {
 	return x_;
@@ -97,10 +103,4 @@ void Mouse::update_position(int dx, int dy)
 {
 	x_ += dx;
 	y_ += dy;
-}
-
-void Mouse::position_in_middle_of_grid()
-{
-	x_ = SIZE / 2;
-	y_ = SIZE / 2;
 }

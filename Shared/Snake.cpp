@@ -3,24 +3,6 @@
 #include "Snake.h"
 #include "RandomNumberGenerator.h"
 
-//class Snake
-//{
-//	public:
-//	Snake();
-//	~Snake();
-//	bool is_at_position(int x, int y);
-//	bool has_caught_mouse();
-//	void spot_mouse(Mouse* p_mouse);
-//	void chase_mouse();
-//	void set_direction(int& dx, int& dy);
-//	void position_at_random();
-//	void update_position(int dx, int dy);
-//	char symbol_;
-//	int x_, y_;
-//	Mouse* p_mouse_;
-//	RandomNumberGenerator rng_;
-//};
-
 Snake::Snake()
 {
 	symbol_ = SNAKEHEAD;
@@ -33,11 +15,6 @@ Snake::Snake()
 Snake::~Snake()
 {
 }
-
-//bool Snake::is_at_position(int x, int y)
-//{
-//	return (x_ == x) && (y_ == y);
-//}
 
 bool Snake::has_caught_mouse()
 {
