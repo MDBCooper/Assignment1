@@ -30,7 +30,7 @@ class Mouse : public MoveableGridItem
 		int mouse_dy_;
 
 		// supporting functions 
-		void position_in_middle_of_grid();
+		
 
 
 };

@@ -36,7 +36,7 @@ bool Underground::is_valid_hole_number(int no) const
 	return (no >= 0) && (no < holes_.size());
 }
 
-bool Underground::has_Mouse_reached_a_hole(Mouse mouse)  //Move?
+bool Underground::has_Mouse_reached_a_hole(const Mouse& mouse) const  //Move?
 {
 	for (int h_no(0); h_no < holes_.size(); ++h_no) //Move?
 	{
@@ -50,7 +50,7 @@ bool Underground::has_Mouse_reached_a_hole(Mouse mouse)  //Move?
 
 	return false;
 }
-int Underground::find_hole_number_at_position(int x, int y) //Move?
+int Underground::find_hole_number_at_position(int x, int y) const
 {
 	for (int h_no(0); h_no < holes_.size(); ++h_no)  //Move?
 	{

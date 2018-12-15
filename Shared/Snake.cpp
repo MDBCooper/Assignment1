@@ -9,9 +9,9 @@ Snake::Snake(const char s, const int x, const int y)
 
 }
 
-Snake::Snake() : MoveableGridItem(SNAKEHEAD, 0,0)
+Snake::Snake() : MoveableGridItem(SNAKEHEAD, rng_.get_random_value(SIZE), rng_.get_random_value(SIZE))
 {
-	position_at_random();
+	//position_at_random();
 	// make the pointer safe before the snake spots the mouse
 	p_mouse_ = nullptr;
 }
@@ -25,9 +25,9 @@ Snake::~Snake()
 //	return (x_ == p_mouse_->x_) && (y_ == p_mouse_->y_);
 //}
 
-bool Snake::has_caught_mouse()
+bool Snake::has_caught_mouse() const
 {
-	return is_at_position(p_mouse_->x_, p_mouse_->y_);
+	return is_at_position(p_mouse_->get_x(), p_mouse_->get_y());
 }
 
 void Snake::spot_mouse(Mouse* p_mouse)
@@ -70,10 +70,10 @@ void Snake::set_direction(int& dx, int& dy)
 }
 
 
-void Snake::position_at_random()
-{
-	// WARNING: this may place on top of other things
-
-	set_x(rng_.get_random_value(SIZE));
-	set_y(rng_.get_random_value(SIZE));
-}
+//void Snake::position_at_random()
+//{
+//	// WARNING: this may place on top of other things
+//
+//	set_x(rng_.get_random_value(SIZE));
+//	set_y(rng_.get_random_value(SIZE));
+//}

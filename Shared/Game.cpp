@@ -116,7 +116,7 @@ const string Game::prepare_end_message()
 	ostringstream os;
 	if (mouse_.has_escaped())
 	{
-		os << "\n\nEND OF GAME: THE MOUSE ESCAPED UNDERGROUND!";
+		os << "\n\nEND OF GAME: THE MOUSE ESCAPED UNDERGROUND!\nSNAKE? SNAKE?! SNAKE!!!";
 	}
 	else
 	{

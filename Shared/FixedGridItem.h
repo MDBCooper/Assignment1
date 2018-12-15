@@ -9,9 +9,9 @@ private:
 	int x_, y_;
 public:
 	FixedGridItem(const char s, const int x, const int y);
-	int get_x();
-	int get_y();
-	bool is_at_position(int x, int y);
+	int get_x() const;
+	int get_y() const;
+	bool is_at_position(int x, int y) const;
 };
 
 #endif

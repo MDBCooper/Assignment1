@@ -14,7 +14,7 @@ MoveableGridItem::MoveableGridItem(const char s, const int x, const int y)
 {
 	return y_;
 }
- bool MoveableGridItem::is_at_position(int x, int y)
+ bool MoveableGridItem::is_at_position(int x, int y) const
  {
 	 return (x_ == x) && (y_ == y);
  }
@@ -27,11 +27,11 @@ MoveableGridItem::MoveableGridItem(const char s, const int x, const int y)
  {
 	 return (x_ == x) && (y_ == y);
  }
- void MoveableGridItem::set_x(int initx)
- {
-	 x_ = initx;
- }
- void MoveableGridItem::set_y(int inity)
- {
-	 y_ = inity;
- }
+ //void MoveableGridItem::set_x(int initx)
+ //{
+	// x_ = initx;
+ //}
+ //void MoveableGridItem::set_y(int inity)
+ //{
+	// y_ = inity;
+ //}

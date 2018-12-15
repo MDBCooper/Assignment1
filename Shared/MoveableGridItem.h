@@ -14,7 +14,7 @@ public:
 	int get_y();
 	void set_x(int initx);
 	void set_y(int inity);
-	bool is_at_position(int x, int y);
+	bool is_at_position(int x, int y) const;
 	int reset_position(int x, int y);
 	void update_position(int dx, int dy);
 
