@@ -69,7 +69,7 @@ const string Game::prepare_grid()
 				}
 				else
 				{
-					const int hole_no(find_hole_number_at_position(col, row));  //Move?
+					const int hole_no(underground_.find_hole_number_at_position(col, row));  //Move?
 
 					if (hole_no != -1)
 						os << underground_.get_hole_no(hole_no).get_symbol(); //Move?
@@ -99,7 +99,7 @@ const void Game::apply_rules()
 	}
 	else
 	{
-		if (mouse_.has_reached_a_hole(underground_)) //Move?
+		if (underground_.has_Mouse_reached_a_hole(mouse_)) //Move?
 		{
 			mouse_.escape_into_hole(); //Move?
 		}

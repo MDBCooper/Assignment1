@@ -7,8 +7,8 @@
 
 #include "constants.h"
 #include "RandomNumberGenerator.h"
-#include "Hole.h"
 #include "Mouse.h"
+#include "Hole.h"
 
 using namespace std;
 

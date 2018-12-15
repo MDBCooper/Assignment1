@@ -1,51 +1,55 @@
-﻿  FixedGridItem.cpp
-  Game.cpp
-c:\users\b7010863\source\repos\assignment1\shared\hole.h(17): error C2512: 'FixedGridItem': no appropriate default constructor available
-  c:\users\b7010863\source\repos\assignment1\shared\fixedgriditem.h(6): note: see declaration of 'FixedGridItem'
-c:\users\b7010863\source\repos\assignment1\shared\hole.h(19): error C3867: 'FixedGridItem::get_x': non-standard syntax; use '&' to create a pointer to member
-c:\users\b7010863\source\repos\assignment1\shared\hole.h(20): error C3867: 'FixedGridItem::get_y': non-standard syntax; use '&' to create a pointer to member
-c:\users\b7010863\source\repos\assignment1\shared\game.cpp(60): error C2248: 'MoveableGridItem::y_': cannot access private member declared in class 'MoveableGridItem'
-  c:\users\b7010863\source\repos\assignment1\shared\moveablegriditem.h(10): note: see declaration of 'MoveableGridItem::y_'
-  c:\users\b7010863\source\repos\assignment1\shared\moveablegriditem.h(6): note: see declaration of 'MoveableGridItem'
-c:\users\b7010863\source\repos\assignment1\shared\game.cpp(60): error C2248: 'MoveableGridItem::x_': cannot access private member declared in class 'MoveableGridItem'
-  c:\users\b7010863\source\repos\assignment1\shared\moveablegriditem.h(9): note: see declaration of 'MoveableGridItem::x_'
-  c:\users\b7010863\source\repos\assignment1\shared\moveablegriditem.h(6): note: see declaration of 'MoveableGridItem'
-c:\users\b7010863\source\repos\assignment1\shared\game.cpp(62): error C2248: 'GridItem::symbol_': cannot access private member declared in class 'GridItem'
-  c:\users\b7010863\source\repos\assignment1\shared\griditem.h(7): note: see declaration of 'GridItem::symbol_'
-  c:\users\b7010863\source\repos\assignment1\shared\griditem.h(5): note: see declaration of 'GridItem'
-  GridItem.cpp
-  Hole.cpp
-c:\users\b7010863\source\repos\assignment1\shared\hole.h(17): error C2512: 'FixedGridItem': no appropriate default constructor available
-  c:\users\b7010863\source\repos\assignment1\shared\fixedgriditem.h(6): note: see declaration of 'FixedGridItem'
-c:\users\b7010863\source\repos\assignment1\shared\hole.h(19): error C3867: 'FixedGridItem::get_x': non-standard syntax; use '&' to create a pointer to member
-c:\users\b7010863\source\repos\assignment1\shared\hole.h(20): error C3867: 'FixedGridItem::get_y': non-standard syntax; use '&' to create a pointer to member
+﻿  Game.cpp
+c:\users\b7014660\source\repos\assignment12\shared\underground.h(24): error C2061: syntax error: identifier 'Mouse'
+c:\users\b7014660\source\repos\assignment12\shared\game.cpp(60): error C2248: 'MoveableGridItem::y_': cannot access private member declared in class 'MoveableGridItem'
+  c:\users\b7014660\source\repos\assignment12\shared\moveablegriditem.h(10): note: see declaration of 'MoveableGridItem::y_'
+  c:\users\b7014660\source\repos\assignment12\shared\moveablegriditem.h(6): note: see declaration of 'MoveableGridItem'
+c:\users\b7014660\source\repos\assignment12\shared\game.cpp(60): error C2248: 'MoveableGridItem::x_': cannot access private member declared in class 'MoveableGridItem'
+  c:\users\b7014660\source\repos\assignment12\shared\moveablegriditem.h(9): note: see declaration of 'MoveableGridItem::x_'
+  c:\users\b7014660\source\repos\assignment12\shared\moveablegriditem.h(6): note: see declaration of 'MoveableGridItem'
+c:\users\b7014660\source\repos\assignment12\shared\game.cpp(62): error C2248: 'GridItem::symbol_': cannot access private member declared in class 'GridItem'
+  c:\users\b7014660\source\repos\assignment12\shared\griditem.h(7): note: see declaration of 'GridItem::symbol_'
+  c:\users\b7014660\source\repos\assignment12\shared\griditem.h(5): note: see declaration of 'GridItem'
+c:\users\b7014660\source\repos\assignment12\shared\game.cpp(102): error C2660: 'Underground::has_Mouse_reached_a_hole': function does not take 1 arguments
+  c:\users\b7014660\source\repos\assignment12\shared\underground.h(24): note: see declaration of 'Underground::has_Mouse_reached_a_hole'
   Main.cpp
-c:\users\b7010863\source\repos\assignment1\shared\hole.h(17): error C2512: 'FixedGridItem': no appropriate default constructor available
-  c:\users\b7010863\source\repos\assignment1\shared\fixedgriditem.h(6): note: see declaration of 'FixedGridItem'
-c:\users\b7010863\source\repos\assignment1\shared\hole.h(19): error C3867: 'FixedGridItem::get_x': non-standard syntax; use '&' to create a pointer to member
-c:\users\b7010863\source\repos\assignment1\shared\hole.h(20): error C3867: 'FixedGridItem::get_y': non-standard syntax; use '&' to create a pointer to member
-  MoveableGridItem.cpp
+c:\users\b7014660\source\repos\assignment12\shared\underground.h(24): error C2061: syntax error: identifier 'Mouse'
   Nut.cpp
-c:\users\b7010863\source\repos\assignment1\shared\hole.h(17): error C2512: 'FixedGridItem': no appropriate default constructor available
-  c:\users\b7010863\source\repos\assignment1\shared\fixedgriditem.h(6): note: see declaration of 'FixedGridItem'
-c:\users\b7010863\source\repos\assignment1\shared\hole.h(19): error C3867: 'FixedGridItem::get_x': non-standard syntax; use '&' to create a pointer to member
-c:\users\b7010863\source\repos\assignment1\shared\hole.h(20): error C3867: 'FixedGridItem::get_y': non-standard syntax; use '&' to create a pointer to member
-  UserInterface.cpp
+c:\users\b7014660\source\repos\assignment12\shared\underground.h(24): error C2061: syntax error: identifier 'Mouse'
   Mouse.cpp
-c:\users\b7010863\source\repos\assignment1\shared\hole.h(17): error C2512: 'FixedGridItem': no appropriate default constructor available
-  c:\users\b7010863\source\repos\assignment1\shared\fixedgriditem.h(6): note: see declaration of 'FixedGridItem'
-c:\users\b7010863\source\repos\assignment1\shared\hole.h(19): error C3867: 'FixedGridItem::get_x': non-standard syntax; use '&' to create a pointer to member
-c:\users\b7010863\source\repos\assignment1\shared\hole.h(20): error C3867: 'FixedGridItem::get_y': non-standard syntax; use '&' to create a pointer to member
-  RandomNumberGenerator.cpp
+c:\users\b7014660\source\repos\assignment12\shared\underground.h(24): error C2061: syntax error: identifier 'Mouse'
   Snake.cpp
-c:\users\b7010863\source\repos\assignment1\shared\hole.h(17): error C2512: 'FixedGridItem': no appropriate default constructor available
-  c:\users\b7010863\source\repos\assignment1\shared\fixedgriditem.h(6): note: see declaration of 'FixedGridItem'
-c:\users\b7010863\source\repos\assignment1\shared\hole.h(19): error C3867: 'FixedGridItem::get_x': non-standard syntax; use '&' to create a pointer to member
-c:\users\b7010863\source\repos\assignment1\shared\hole.h(20): error C3867: 'FixedGridItem::get_y': non-standard syntax; use '&' to create a pointer to member
+c:\users\b7014660\source\repos\assignment12\shared\underground.h(24): error C2061: syntax error: identifier 'Mouse'
   Underground.cpp
-c:\users\b7010863\source\repos\assignment1\shared\hole.h(17): error C2512: 'FixedGridItem': no appropriate default constructor available
-  c:\users\b7010863\source\repos\assignment1\shared\fixedgriditem.h(6): note: see declaration of 'FixedGridItem'
-c:\users\b7010863\source\repos\assignment1\shared\hole.h(19): error C3867: 'FixedGridItem::get_x': non-standard syntax; use '&' to create a pointer to member
-c:\users\b7010863\source\repos\assignment1\shared\hole.h(20): error C3867: 'FixedGridItem::get_y': non-standard syntax; use '&' to create a pointer to member
-c:\users\b7010863\source\repos\assignment1\shared\underground.cpp(24): error C2661: 'Hole::Hole': no overloaded function takes 2 arguments
+c:\program files (x86)\microsoft visual studio\2017\vc\tools\msvc\14.14.26428\include\xutility(2957): error C2280: 'Hole &Hole::operator =(const Hole &)': attempting to reference a deleted function
+  c:\users\b7014660\source\repos\assignment12\shared\hole.h(17): note: compiler has generated 'Hole::operator =' here
+  c:\program files (x86)\microsoft visual studio\2017\vc\tools\msvc\14.14.26428\include\xutility(2971): note: see reference to function template instantiation 'void std::_Fill_unchecked1<_FwdIt,_Ty>(_FwdIt,_FwdIt,const _Ty &,std::false_type)' being compiled
+          with
+          [
+              _FwdIt=Hole *,
+              _Ty=Hole
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\vc\tools\msvc\14.14.26428\include\vector(1357): note: see reference to function template instantiation 'void std::_Fill_unchecked<Hole*,_Ty>(_FwdIt,_FwdIt,const _Ty &)' being compiled
+          with
+          [
+              _Ty=Hole,
+              _FwdIt=Hole *
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\vc\tools\msvc\14.14.26428\include\vector(1330): note: while compiling class template member function 'void std::vector<Hole,std::allocator<_Ty>>::assign(const unsigned __int64,const _Ty &)'
+          with
+          [
+              _Ty=Hole
+          ]
+  c:\users\b7014660\source\repos\assignment12\shared\underground.cpp(28): note: see reference to function template instantiation 'void std::vector<Hole,std::allocator<_Ty>>::assign(const unsigned __int64,const _Ty &)' being compiled
+          with
+          [
+              _Ty=Hole
+          ]
+  c:\users\b7014660\source\repos\assignment12\shared\underground.h(19): note: see reference to class template instantiation 'std::vector<Hole,std::allocator<_Ty>>' being compiled
+          with
+          [
+              _Ty=Hole
+          ]
+  c:\users\b7014660\source\repos\assignment12\shared\hole.h(17): note: 'Hole &Hole::operator =(const Hole &)': function was implicitly deleted because a base class invokes a deleted or inaccessible function 'FixedGridItem &FixedGridItem::operator =(const FixedGridItem &)'
+  c:\users\b7014660\source\repos\assignment12\shared\fixedgriditem.h(20): note: 'FixedGridItem &FixedGridItem::operator =(const FixedGridItem &)': function was implicitly deleted because 'FixedGridItem' has a data member 'FixedGridItem::y_' of const-qualified non-class type
+  c:\users\b7014660\source\repos\assignment12\shared\fixedgriditem.h(10): note: see declaration of 'FixedGridItem::y_'
   Generating Code...

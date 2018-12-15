@@ -13,12 +13,7 @@ public:
 	{
 	}
 
-	/*Hole::Hole(int x, int y, char symbol_)
-	{
-		symbol_ = HOLE;
-		get_x;
-		get_y;
-	}*/
+
 };
 
 #endif

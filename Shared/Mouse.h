@@ -14,7 +14,7 @@ class Mouse : public MoveableGridItem
 		// assessors
 		const bool is_alive() const;
 		const bool has_escaped() const;
-		bool has_reached_a_hole(Underground ug); //Move?
+		
 
 		// mutators
 		void die();
