@@ -5,6 +5,7 @@
 #include "Snake.h"
 #include "Nut.h"
 #include "UserInterface.h"
+#include "Underground.h"
 
 class Game
 {

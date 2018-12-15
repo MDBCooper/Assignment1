@@ -1,5 +1,10 @@
 #include "MoveableGridItem.h"
 
+MoveableGridItem::MoveableGridItem(const char s, const int x, const int y)
+	: GridItem(s), x_(x), y_(y) {
+
+}
+
  int MoveableGridItem::get_x()
 {
 	return x_;

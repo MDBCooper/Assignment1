@@ -25,9 +25,9 @@ void Underground::set_hole_no_at_position(int no, int x, int y)
 
 	switch (no)
 	{
-		case 0: holes_.assign(0,h); break;
-		case 1: holes_.assign(1,h); break;
-		case 2: holes_.assign(2,h); break;
+		case 0: holes_.at(0) = h; break;
+		case 1: holes_.at(1) = h; break;
+		case 2: holes_.at(2) = h; break;
 	}
 }
 

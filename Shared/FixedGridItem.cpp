@@ -1,5 +1,10 @@
 #include "FixedGridItem.h"
 
+FixedGridItem::FixedGridItem(const char s, const int x, const int y)
+	: GridItem(s), x_(x), y_(y)
+{
+}
+
 int FixedGridItem::get_x()
 {
 	return x_;

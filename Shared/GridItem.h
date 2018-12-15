@@ -4,13 +4,9 @@
 class GridItem
 {
 private:
-	const char symbol_;
+	char symbol_;
 public:
-
-	GridItem::GridItem(const char symbol): symbol_(symbol)
-	{
-	
-	}
+	GridItem(const char symbol);
 	char get_symbol();
 };
 

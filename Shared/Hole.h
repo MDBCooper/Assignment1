@@ -8,12 +8,8 @@
 class Hole : public FixedGridItem
 {
 public:
-	Hole::Hole(const char s, const int x, const int y)
-		: FixedGridItem (s, x, y)
-	{
-	}
-
-
+	Hole();
+	Hole(const char s, const int x, const int y);
 };
 
 #endif

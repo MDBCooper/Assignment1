@@ -3,7 +3,6 @@
 
 #include "MoveableGridItem.h"
 #include "constants.h"
-#include "Underground.h"
 
 class Mouse : public MoveableGridItem
 {
