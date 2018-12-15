@@ -4,9 +4,8 @@
 #include "RandomNumberGenerator.h"
 
 
-Snake::Snake()
+Snake::Snake() : MoveableGridItem(SNAKEHEAD, rng_.get_random_value(SIZE), rng_.get_random_value(SIZE))
 {
-	symbol_ = SNAKEHEAD;
 	position_at_random();
 
 	// make the pointer safe before the snake spots the mouse
@@ -56,22 +55,22 @@ void Snake::set_direction(int& dx, int& dy)
 	dx = 0; dy = 0;
 
 	// update coordinate if necessary
-	if (x_ < p_mouse_->get_x())          // if snake on left of mouse
+	if (get_x() < p_mouse_->get_x())          // if snake on left of mouse
 		dx = 1;                          // snake should move right
-	else if (x_ > p_mouse_->get_x())     // if snake on left of mouse
+	else if (get_x() > p_mouse_->get_x())     // if snake on left of mouse
 		dx = -1;						 // snake should move left
 
-	if (y_ < p_mouse_->get_y())          // if snake is above mouse
+	if (get_y() < p_mouse_->get_y())          // if snake is above mouse
 		dy = 1;                          // snake should move down
-	else if (y_ > p_mouse_->get_y())     // if snake is below mouse
+	else if (get_y() > p_mouse_->get_y())     // if snake is below mouse
 		dy = -1;						 // snake should move up
 }
 
 
-void Snake::position_at_random()
-{
-	// WARNING: this may place on top of other things
-
-	x_ = rng_.get_random_value(SIZE);
-	y_ = rng_.get_random_value(SIZE);
-}
+//void Snake::position_at_random()
+//{
+//	// WARNING: this may place on top of other things
+//
+//	x_ = rng_.get_random_value(SIZE);
+//	y_ = rng_.get_random_value(SIZE);
+//}

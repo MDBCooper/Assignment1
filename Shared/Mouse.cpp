@@ -1,6 +1,6 @@
 #include "Mouse.h"
 
-Mouse::Mouse() : symbol_(MOUSE), x_(0), y_(0), alive_(true), escaped_(false), mouse_dx_(0), mouse_dy_(0)
+Mouse::Mouse() : MoveableGridItem (MOUSE, 0, 0), alive_(true), escaped_(false), mouse_dx_(0), mouse_dy_(0)
 {
 	position_in_middle_of_grid();
 }
