@@ -1,8 +1,8 @@
 #include "Mouse.h"
 
-Mouse::Mouse() : MoveableGridItem (MOUSE, 0, 0), alive_(true), escaped_(false), mouse_dx_(0), mouse_dy_(0)
+Mouse::Mouse() : MoveableGridItem (MOUSE, SIZE / 2, SIZE / 2), alive_(true), escaped_(false), mouse_dx_(0), mouse_dy_(0)
 {
-	position_in_middle_of_grid();
+	//position_in_middle_of_grid();
 }
 
 
@@ -62,8 +62,8 @@ void Mouse::scamper(char k)
 }
 
 
-void Mouse::position_in_middle_of_grid()
-{
-	x_ = SIZE / 2;
-	y_ = SIZE / 2;
-}
+//void Mouse::position_in_middle_of_grid()
+//{
+//	x_ = SIZE / 2;
+//	y_ = SIZE / 2;
+//}
