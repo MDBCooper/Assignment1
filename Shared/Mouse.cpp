@@ -5,31 +5,6 @@ Mouse::Mouse() : symbol_(MOUSE), x_(0), y_(0), alive_(true), escaped_(false), mo
 	position_in_middle_of_grid();
 }
 
-void Mouse::position_in_middle_of_grid()
-{
-	x_ = SIZE / 2;
-	y_ = SIZE / 2;
-}
-
-const int Mouse::get_x()
-{
-	return x_;
-}
-
-const int Mouse::get_y()
-{
-	return y_;
-}
-
-const char Mouse::get_symbol() const
-{
-	return symbol_;
-}
-
-const bool Mouse::is_at_position(int x, int y)
-{
-	return (x_ == x) && (y_ == y);
-}
 
 const bool Mouse::is_alive() const
 {
@@ -41,7 +16,20 @@ const bool Mouse::has_escaped() const
 	return escaped_;
 }
 
+bool Mouse::has_reached_a_hole(Underground ug)  //Move?
+{
+	for (int h_no(0); h_no < ug.holes_.size(); ++h_no) //Move?
+	{
+		Hole h = ug.get_hole_no(h_no); //Move?
 
+		if (is_at_position(h.get_x(), h.get_y()))
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
 
 void Mouse::die()
 {
@@ -86,8 +74,9 @@ void Mouse::scamper(char k)
 	}
 }
 
-void Mouse::update_position(int dx, int dy)
+
+void Mouse::position_in_middle_of_grid()
 {
-	x_ += dx;
-	y_ += dy;
+	x_ = SIZE / 2;
+	y_ = SIZE / 2;
 }

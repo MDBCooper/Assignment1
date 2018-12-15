@@ -3,6 +3,7 @@
 #include "Snake.h"
 #include "RandomNumberGenerator.h"
 
+
 Snake::Snake()
 {
 	symbol_ = SNAKEHEAD;
@@ -16,15 +17,21 @@ Snake::~Snake()
 {
 }
 
+
+//bool Snake::has_caught_mouse()
+//{
+//	return (x_ == p_mouse_->x_) && (y_ == p_mouse_->y_);
+//}
+
 bool Snake::has_caught_mouse()
 {
-	return (x_ == p_mouse_->x_) && (y_ == p_mouse_->y_);
+	return is_at_position(p_mouse_->x_, p_mouse_->y_);
 }
 
 void Snake::spot_mouse(Mouse* p_mouse)
 {
 	// pre-condition: The mouse needs to exist 
-	assert(p_mouse != nullptr);
+	//assert(p_mouse != nullptr);
 
 	p_mouse_ = p_mouse;
 }
@@ -43,7 +50,7 @@ void Snake::chase_mouse()
 void Snake::set_direction(int& dx, int& dy)
 {
 	// pre-condition: The snake needs to know where the mouse is 
-	assert(p_mouse_ != nullptr);
+	//assert(p_mouse_ != nullptr);
 
 	// assume snake only move when necessary
 	dx = 0; dy = 0;
@@ -60,11 +67,6 @@ void Snake::set_direction(int& dx, int& dy)
 		dy = -1;						 // snake should move up
 }
 
-void Snake::update_position(int dx, int dy)
-{
-	x_ += dx;
-	y_ += dy;
-}
 
 void Snake::position_at_random()
 {

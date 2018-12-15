@@ -1,27 +1,24 @@
 #ifndef MouseH 
 #define MouseH 
 
-
+#include "MoveableGridItem.h"
 #include "constants.h"
+#include "Underground.h"
 
-class Mouse
+class Mouse : public MoveableGridItem
 {
 	public:
 		// constructor
 		Mouse();
 
 		// assessors
-		const int get_x();
-		const int get_y();
-		const char get_symbol() const;
-		const bool is_at_position(int x, int y);
 		const bool is_alive() const;
 		const bool has_escaped() const;
-
+		bool has_reached_a_hole(Underground ug); //Move?
 
 		// mutators
 		void die();
-		void escape_into_hole(); //Move? Keep, is a setter
+		void escape_into_hole(); //Move?
 		void scamper(char k);
 
 		int  x_, y_;
@@ -35,9 +32,7 @@ class Mouse
 
 		// supporting functions 
 		void position_in_middle_of_grid();
-		void update_position(int dx, int dy);
 
-		char symbol_;
 
 };
 

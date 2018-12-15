@@ -7,6 +7,7 @@
 // defining symbols used for display of the grid and grid items
 #define SNAKEHEAD ('S')	// snake symbol
 #define MOUSE     ('M')	// mouse symbol
+#define NUT		  ('N') // nut symbol
 #define HOLE      ('H')	// hole symbol
 #define FREECELL  ('.')	// empty cell on grid
 

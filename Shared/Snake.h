@@ -2,10 +2,13 @@
 #ifndef SnakeH
 #define SnakeH 
 
+#include "MoveableGridItem.h"
+
 #include "Mouse.h"
 #include "RandomNumberGenerator.h"
 
-class Snake {
+class Snake : public MoveableGridItem
+{
 	public:
 		Snake();
 		~Snake();
@@ -14,11 +17,13 @@ class Snake {
 		void chase_mouse();
 		void set_direction(int& dx, int& dy);
 		void position_at_random();
-		void update_position(int dx, int dy);
-		char symbol_;
-		int x_, y_;
-		Mouse* p_mouse_;
 		RandomNumberGenerator rng_;
+		Mouse* p_mouse_;
+
+		Snake::Snake(const char s, const int x, const int y)
+			:MoveableGridItem(s, x, y) {
+
+		}
 };
 
 #endif 

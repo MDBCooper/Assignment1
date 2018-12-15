@@ -1,30 +1,24 @@
 #ifndef HoleH 
 #define HoleH 
 
+#include "FixedGridItem.h"
+
 #include "constants.h"
 // None of these are constants because every attribute is being changed
-class Hole
+class Hole : public FixedGridItem
 {
-private:
-	int x_;
-	int y_;
-	char symbol_;
 public:
-	Hole::Hole()
+	Hole::Hole(const char s, const int x, const int y)
+		: FixedGridItem (s, x, y)
 	{
 	}
 
-	Hole::Hole(int x, int y)
+	Hole::Hole(int x, int y, char symbol_)
 	{
 		symbol_ = HOLE;
-		x_ = x;
-		y_ = y;
+		get_x;
+		get_y;
 	}
-
-	const int get_x();
-	const int get_y();
-	const char get_symbol() const;
-	bool is_at_position(int, int);
 };
 
 #endif

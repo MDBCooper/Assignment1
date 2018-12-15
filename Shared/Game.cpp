@@ -17,13 +17,16 @@ const void Game::set_up(UserInterface* pui)
 	snake_.position_at_random();
 	snake_.spot_mouse(&mouse_);
 
+	// set up nut
+	
+
 	// set up the UserInterface
 	p_ui = pui;
 }
 
 const void Game::run()
 {
-	assert(p_ui != nullptr);
+	//assert(p_ui != nullptr);
 
 	p_ui->draw_grid_on_screen(prepare_grid());
 	key_ = p_ui->get_keypress_from_user();
@@ -66,7 +69,7 @@ const string Game::prepare_grid()
 				}
 				else
 				{
-					const int hole_no(underground_.find_hole_number_at_position(col, row));  //Move?
+					const int hole_no(find_hole_number_at_position(col, row));  //Move?
 
 					if (hole_no != -1)
 						os << underground_.get_hole_no(hole_no).get_symbol(); //Move?
@@ -86,7 +89,18 @@ const bool Game::is_arrow_key_code(int keycode)
 	return (keycode == LEFT) || (keycode == RIGHT) || (keycode == UP) || (keycode == DOWN);
 }
 
+int Game::find_hole_number_at_position(int x, int y) //Move?
+{
+	for (int h_no(0); h_no < underground_.holes_.size(); ++h_no)  //Move?
+	{
+		if (underground_.get_hole_no(h_no).is_at_position(x, y))  //Move?
+		{
+			return h_no;
+		}
+	}
 
+	return -1; // not a hole
+}
 
 const void Game::apply_rules()
 {
@@ -96,7 +110,7 @@ const void Game::apply_rules()
 	}
 	else
 	{
-		if (underground_.has_Mouse_reached_a_hole(mouse_)) //Move? Keep, Game can't see the hole here
+		if (mouse_.has_reached_a_hole(underground_)) //Move?
 		{
 			mouse_.escape_into_hole(); //Move?
 		}
