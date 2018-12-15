@@ -27,3 +27,11 @@ MoveableGridItem::MoveableGridItem(const char s, const int x, const int y)
  {
 	 return (x_ == x) && (y_ == y);
  }
+ void MoveableGridItem::set_x(int initx)
+ {
+	 x_ = initx;
+ }
+ void MoveableGridItem::set_y(int inity)
+ {
+	 y_ = inity;
+ }

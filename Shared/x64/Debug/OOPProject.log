@@ -1,3 +1,2 @@
 ﻿  Snake.cpp
-Snake.obj : error LNK2001: unresolved external symbol "public: static class RandomNumberGenerator Snake::rng_" (?rng_@Snake@@2VRandomNumberGenerator@@A)
-C:\Users\b7014660\Source\Repos\Assignment12\Shared\x64\Debug\OOPProject.exe : fatal error LNK1120: 1 unresolved externals
+  OOPProject.vcxproj -> C:\Users\b7014660\Source\Repos\Assignment12\Shared\x64\Debug\OOPProject.exe

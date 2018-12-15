@@ -12,6 +12,8 @@ public:
 	MoveableGridItem::MoveableGridItem(const char s, const int x, const int y);
 	int get_x();
 	int get_y();
+	void set_x(int initx);
+	void set_y(int inity);
 	bool is_at_position(int x, int y);
 	int reset_position(int x, int y);
 	void update_position(int dx, int dy);

@@ -2,17 +2,16 @@
 #include "Mouse.h"
 #include "Snake.h"
 #include "RandomNumberGenerator.h"
+RandomNumberGenerator Snake::rng_ = RandomNumberGenerator();
 Snake::Snake(const char s, const int x, const int y)
 	:MoveableGridItem(s, x, y) {
 	
 
 }
 
-Snake::Snake() : MoveableGridItem(SNAKEHEAD, rng_.get_random_value(SIZE), rng_.get_random_value(SIZE))
+Snake::Snake() : MoveableGridItem(SNAKEHEAD, 0,0)
 {
-	//position_at_random();
-	
-
+	position_at_random();
 	// make the pointer safe before the snake spots the mouse
 	p_mouse_ = nullptr;
 }
@@ -20,7 +19,6 @@ Snake::Snake() : MoveableGridItem(SNAKEHEAD, rng_.get_random_value(SIZE), rng_.g
 Snake::~Snake()
 {
 }
-
 
 //bool Snake::has_caught_mouse()
 //{
@@ -72,10 +70,10 @@ void Snake::set_direction(int& dx, int& dy)
 }
 
 
-//void Snake::position_at_random()
-//{
-//	// WARNING: this may place on top of other things
-//
-//	x_ = rng_.get_random_value(SIZE);
-//	y_ = rng_.get_random_value(SIZE);
-//}
+void Snake::position_at_random()
+{
+	// WARNING: this may place on top of other things
+
+	set_x(rng_.get_random_value(SIZE));
+	set_y(rng_.get_random_value(SIZE));
+}
