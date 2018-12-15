@@ -89,18 +89,7 @@ const bool Game::is_arrow_key_code(int keycode)
 	return (keycode == LEFT) || (keycode == RIGHT) || (keycode == UP) || (keycode == DOWN);
 }
 
-int Game::find_hole_number_at_position(int x, int y) //Move?
-{
-	for (int h_no(0); h_no < underground_.holes_.size(); ++h_no)  //Move?
-	{
-		if (underground_.get_hole_no(h_no).is_at_position(x, y))  //Move?
-		{
-			return h_no;
-		}
-	}
 
-	return -1; // not a hole
-}
 
 const void Game::apply_rules()
 {

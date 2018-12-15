@@ -21,7 +21,7 @@ void Underground::set_hole_no_at_position(int no, int x, int y)
 	// pre-condition: valid hole number
 	assert(is_valid_hole_number(no));
 
-	Hole h(x, y);
+	Hole h( HOLE ,x, y);
 
 	switch (no)
 	{
@@ -34,4 +34,31 @@ void Underground::set_hole_no_at_position(int no, int x, int y)
 bool Underground::is_valid_hole_number(int no) const
 {
 	return (no >= 0) && (no < holes_.size());
+}
+
+bool Underground::has_Mouse_reached_a_hole(Mouse mouse)  //Move?
+{
+	for (int h_no(0); h_no < holes_.size(); ++h_no) //Move?
+	{
+		Hole h = get_hole_no(h_no); //Move?
+
+		if (mouse.is_at_position(h.get_x(), h.get_y()))
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+int Underground::find_hole_number_at_position(int x, int y) //Move?
+{
+	for (int h_no(0); h_no < holes_.size(); ++h_no)  //Move?
+	{
+		if (get_hole_no(h_no).is_at_position(x, y))  //Move?
+		{
+			return h_no;
+		}
+	}
+
+	return -1; // not a hole
 }
