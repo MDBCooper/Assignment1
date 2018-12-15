@@ -7,7 +7,8 @@ private:
 	const char symbol_;
 public:
 
-	GridItem::GridItem(const char symbol): symbol_(symbol)
+	GridItem::GridItem(const char symbol)
+		: symbol_(symbol)
 	{
 	
 	}

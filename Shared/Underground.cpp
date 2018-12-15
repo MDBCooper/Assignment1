@@ -21,7 +21,7 @@ void Underground::set_hole_no_at_position(int no, int x, int y)
 	// pre-condition: valid hole number
 	assert(is_valid_hole_number(no));
 
-	Hole h(x, y);
+	Hole h(HOLE, x, y);
 
 	switch (no)
 	{

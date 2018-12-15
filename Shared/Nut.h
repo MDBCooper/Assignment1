@@ -13,6 +13,10 @@ private:
 public:
 	//constructor
 	Nut();
+	Nut::Nut(const char s, const int x, const int y)
+		:MoveableGridItem(s, x, y) {
+
+	}
 
 	//accessors
 	bool has_been_collected(); 
