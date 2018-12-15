@@ -14,7 +14,7 @@ const void Game::set_up(UserInterface* pui)
 	// mouse state already set up in its contructor
 
 	// set up snake
-	snake_.position_at_random();
+	//snake_.position_at_random();
 	snake_.spot_mouse(&mouse_);
 
 	// set up nut
@@ -57,9 +57,9 @@ const string Game::prepare_grid()
 	{
 		for (int col(1); col <= SIZE; ++col)
 		{
-			if ((row == snake_.y_) && (col == snake_.x_))
+			if ((row == snake_.get_y()) && (col == snake_.get_x()))
 			{
-				os << snake_.symbol_;
+				os << snake_.get_symbol();
 			}
 			else
 			{

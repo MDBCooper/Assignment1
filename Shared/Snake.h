@@ -16,7 +16,7 @@ class Snake : public MoveableGridItem
 		void spot_mouse(Mouse* p_mouse);
 		void chase_mouse();
 		void set_direction(int& dx, int& dy);
-		void position_at_random();
+		//void position_at_random();
 		RandomNumberGenerator rng_;
 		Mouse* p_mouse_;
 
