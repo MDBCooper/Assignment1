@@ -8,7 +8,7 @@ Snake::Snake(const char s, const int x, const int y)
 
 }
 
-Snake::Snake() : MoveableGridItem(SNAKEHEAD, rng_.get_random_value(SIZE), rng_.get_random_value(SIZE))
+Snake::Snake() : MoveableGridItem(SNAKEHEAD, 5, 5)
 {
 	//position_at_random();
 	
@@ -22,15 +22,15 @@ Snake::~Snake()
 }
 
 
-//bool Snake::has_caught_mouse()
-//{
-//	return (x_ == p_mouse_->x_) && (y_ == p_mouse_->y_);
-//}
-
 bool Snake::has_caught_mouse()
 {
-	return is_at_position(p_mouse_->x_, p_mouse_->y_);
+	return (get_x() == p_mouse_->get_x()) && (get_y() == p_mouse_->get_y());
 }
+
+//bool Snake::has_caught_mouse()
+//{
+//	return is_at_position(p_mouse_->x_, p_mouse_->y_);
+//}
 
 void Snake::spot_mouse(Mouse* p_mouse)
 {
