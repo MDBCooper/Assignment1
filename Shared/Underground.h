@@ -6,7 +6,6 @@
 #include <vector>
 
 #include "constants.h"
-#include "RandomNumberGenerator.h"
 #include "Mouse.h"
 #include "Hole.h"
 
