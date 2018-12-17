@@ -6,19 +6,14 @@
 #include <vector>
 #include "Mouse.h"
 #include "RandomNumberGenerator.h"
-
+#include "SnakeTail.h"
 class Snake : public MoveableGridItem
 {
 	private:
-		struct TailPiece {
-			char Symbol_ = SNAKETAIL;
-			int x_;
-			int y_;
-		};
 		void set_direction(int& dx, int& dy);
 		static RandomNumberGenerator rng_;
 		Mouse* p_mouse_;
-		vector<TailPiece> snakeTail_;
+		vector<SnakeTail> snakeTail_;
 	public:
 		Snake();
 		Snake(const char s, const int x, const int y);
@@ -29,6 +24,7 @@ class Snake : public MoveableGridItem
 		void move_Tail();
 		int get_Tail_x(int tailPiece) const;
 		int get_Tail_y(int tailPiece) const;
+		char get_Tail_Symbol(int tailPiece) const;
 };
 
 

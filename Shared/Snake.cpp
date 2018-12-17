@@ -14,9 +14,7 @@ Snake::Snake() : MoveableGridItem(SNAKEHEAD, rng_.get_random_value(SIZE), rng_.g
 	//position_at_random();
 	// make the pointer safe before the snake spots the mouse
 	p_mouse_ = nullptr;
-	TailPiece t;
-	t.x_ = get_x();
-	t.y_ = get_y();
+	SnakeTail t(SNAKETAIL, get_x(), get_y());
 	snakeTail_.assign(MAXTailPieces, t);
 }
 
@@ -72,17 +70,18 @@ void Snake::move_Tail() {
 	int lastSnakeHeadPosX(get_x()), lastSnakeHeadPosY(get_y());
 	int lastSnakeTail1PosX(get_Tail_x(0)), lastSnakeTail1PosY(get_Tail_y(0));
 	int lastSnakeTail2PosX(get_Tail_x(1)), lastSnakeTail2PosY(get_Tail_y(1));
-	snakeTail_.at(0).x_ = lastSnakeHeadPosX;
-	snakeTail_.at(0).y_ = lastSnakeHeadPosY;
-	snakeTail_.at(1).x_ = lastSnakeTail1PosX;
-	snakeTail_.at(1).y_ = lastSnakeTail1PosY;
-	snakeTail_.at(2).x_ = lastSnakeTail2PosX;
-	snakeTail_.at(2).y_ = lastSnakeTail2PosY;
+	snakeTail_.at(0).updatePosition (lastSnakeHeadPosX, lastSnakeHeadPosY);
+	snakeTail_.at(1).updatePosition(lastSnakeTail1PosX, lastSnakeTail1PosY);
+	snakeTail_.at(2).updatePosition(lastSnakeTail2PosX, lastSnakeTail2PosY);
 }
 
 int Snake::get_Tail_y(int tailPiece) const {
-	return snakeTail_.at(tailPiece).y_;
+	return snakeTail_.at(tailPiece).get_y();
 }
 int Snake::get_Tail_x(int tailPiece) const {
-	return snakeTail_.at(tailPiece).x_;
+	return snakeTail_.at(tailPiece).get_x();
+}
+
+char Snake::get_Tail_Symbol(int tailPiece) const {
+	return snakeTail_.at(tailPiece).get_symbol();
 }

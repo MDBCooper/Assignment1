@@ -65,19 +65,19 @@ const string Game::prepare_grid()
 			{
 				if ((row == snake_.get_Tail_y(0)) && (col == snake_.get_Tail_x(0)))
 				{
-					os << SNAKETAIL;
+					os << snake_.get_Tail_Symbol(0);
 				}
 				else
 				{
 					if ((row == snake_.get_Tail_y(1)) && (col == snake_.get_Tail_x(1)))
 					{
-						os << SNAKETAIL;
+						os << snake_.get_Tail_Symbol(1);
 					}
 					else
 					{
 						if ((row == snake_.get_Tail_y(2)) && (col == snake_.get_Tail_x(2)))
 						{
-							os << SNAKETAIL;
+							os << snake_.get_Tail_Symbol(2);
 						}
 						else
 						{
