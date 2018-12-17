@@ -63,22 +63,43 @@ const string Game::prepare_grid()
 			}
 			else
 			{
-				if ((row == mouse_.get_y()) && (col == mouse_.get_x()))
+				if ((row == snake_.get_Tail_y(0)) && (col == snake_.get_Tail_x(0)))
 				{
-					os << mouse_.get_symbol();
+					os << SNAKETAIL;
 				}
 				else
 				{
-					if ((row == nut_.get_y()) && (col == nut_.get_x())) {
-						os << nut_.get_symbol();
+					if ((row == snake_.get_Tail_y(1)) && (col == snake_.get_Tail_x(1)))
+					{
+						os << SNAKETAIL;
 					}
-					else {
-						const int hole_no(underground_.find_hole_number_at_position(col, row));  //Move?
-
-						if (hole_no != -1)
-							os << underground_.get_hole_no(hole_no).get_symbol(); //Move?
+					else
+					{
+						if ((row == snake_.get_Tail_y(2)) && (col == snake_.get_Tail_x(2)))
+						{
+							os << SNAKETAIL;
+						}
 						else
-							os << FREECELL;
+						{
+							if ((row == mouse_.get_y()) && (col == mouse_.get_x()))
+							{
+								os << mouse_.get_symbol();
+							}
+							else
+							{
+								if ((row == nut_.get_y()) && (col == nut_.get_x())) {
+									os << nut_.get_symbol();
+								}
+								else {
+									const int hole_no(underground_.find_hole_number_at_position(col, row));  //Move?
+
+									if (hole_no != -1)
+										os << underground_.get_hole_no(hole_no).get_symbol(); //Move?
+									else
+										os << FREECELL;
+								}
+							}
+						}
 					}
 				}
 			}
