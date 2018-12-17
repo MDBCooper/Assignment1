@@ -1,10 +1,4 @@
-﻿  FixedGridItem.cpp
-  Game.cpp
-  Hole.cpp
-  Main.cpp
-  Mouse.cpp
+﻿  Game.cpp
   Nut.cpp
-  Snake.cpp
-  Underground.cpp
   Generating Code...
   OOPProject.vcxproj -> C:\Users\b7010863\Source\Repos\Assignment1\Shared\x64\Debug\OOPProject.exe

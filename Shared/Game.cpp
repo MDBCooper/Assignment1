@@ -18,7 +18,7 @@ const void Game::set_up(UserInterface* pui)
 	snake_.spot_mouse(&mouse_);
 
 	// set up nut
-	
+	nut_.mouse_location(&mouse_);
 
 	// set up the UserInterface
 	p_ui = pui;
@@ -69,12 +69,17 @@ const string Game::prepare_grid()
 				}
 				else
 				{
-					const int hole_no(underground_.find_hole_number_at_position(col, row));  //Move?
+					if ((row == nut_.get_y()) && (col == nut_.get_x())) {
+						os << nut_.get_symbol();
+					}
+					else {
+						const int hole_no(underground_.find_hole_number_at_position(col, row));  //Move?
 
-					if (hole_no != -1)
-						os << underground_.get_hole_no(hole_no).get_symbol(); //Move?
-					else
-						os << FREECELL;
+						if (hole_no != -1)
+							os << underground_.get_hole_no(hole_no).get_symbol(); //Move?
+						else
+							os << FREECELL;
+					}
 				}
 			}
 		}
@@ -99,7 +104,8 @@ const void Game::apply_rules()
 	}
 	else
 	{
-		if (underground_.has_Mouse_reached_a_hole(mouse_)) //Move?
+		nut_.has_been_collected();
+		if (underground_.has_Mouse_reached_a_hole(mouse_) && nut_.has_been_collected()) //Move?
 		{
 			mouse_.escape_into_hole(); //Move?
 		}
@@ -116,13 +122,13 @@ const string Game::prepare_end_message()
 	ostringstream os;
 	if (mouse_.has_escaped())
 	{
-		os << "\n\nEND OF GAME: THE MOUSE ESCAPED UNDERGROUND!\nSNAKE? SNAKE?! SNAKE!!!";
+		os << "\n\nEND OF GAME: THE MOUSE ESCAPED UNDERGROUND!\nMISSION FAILED! WE'LL GET 'EM NEXT TIME";
 	}
 	else
 	{
 		if (!mouse_.is_alive())
 		{
-			os << "\n\nEND OF GAME: THE SNAKE ATE THE MOUSE!";
+			os << "\n\nEND OF GAME: THE SNAKE ATE THE MOUSE!\nLADIES AND GENTLEMEN... WE GOT 'EM!";
 		}
 		else
 		{

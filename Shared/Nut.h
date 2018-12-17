@@ -10,6 +10,7 @@ class Nut : public MoveableGridItem
 {
 private:
 	Mouse* p_mouse_;
+	bool collected;
 public:
 	//constructor
 	Nut();
@@ -19,8 +20,9 @@ public:
 	}
 
 	//accessors
-	bool has_been_collected(); 
+	bool has_been_collected();
 	void disappear();
+	void mouse_location(Mouse* p_mouse);
 };
 
 #endif 
