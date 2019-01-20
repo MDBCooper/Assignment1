@@ -1,8 +1,9 @@
 #include "Mouse.h"
+RandomNumberGenerator Mouse::rng_ = RandomNumberGenerator();
 
-Mouse::Mouse() : MoveableGridItem (MOUSE, SIZE / 2, SIZE / 2), alive_(true), escaped_(false), mouse_dx_(0), mouse_dy_(0)
+Mouse::Mouse() : MoveableGridItem(MOUSE, rng_.get_random_value(SIZE), rng_.get_random_value(SIZE)), alive_(true), escaped_(false)
 {
-	//position_in_middle_of_grid();
+	p_nut_ = nullptr;
 }
 
 const bool Mouse::is_alive() const
@@ -20,35 +21,53 @@ void Mouse::die()
 	alive_ = false;
 }
 
-void Mouse::escape_into_hole() //Move?
+bool Mouse::got_nut() {
+	if (is_at_position(p_nut_->get_x(), p_nut_->get_y())) {
+		p_nut_->disappear();
+		return true;
+	}
+	return false;
+}
+
+//bool Mouse::can_collect_nut() {
+//	
+//}
+
+void Mouse::escape_into_hole()
 {
 	escaped_ = true;
 }
 
+void Mouse::nut_location(Nut* p_nut) {
+	p_nut_ = p_nut;
+}
+
 void Mouse::scamper(char k)
 {
+	int mouse_dx_ = 0;
+	int mouse_dy_ = 0;
 	// move mouse in required direction
 	// pre: k is an arrow representing the direction in which the mouse moves
 
 	// find direction indicated by k
 	switch (k)
 	{
-		case LEFT:
-			mouse_dx_ = -1;
-			mouse_dy_ = 0;
-			break;
-		case RIGHT:
-			mouse_dx_ = +1;
-			mouse_dy_ = 0;
-			break;
-		case UP:
-			mouse_dx_ = 0;
-			mouse_dy_ = -1;
-			break;
-		case DOWN:
-			mouse_dx_ = 0;
-			mouse_dy_ = +1;
-			break;
+	case LEFT:
+		mouse_dx_ = -1;
+		mouse_dy_ = 0;
+		break;
+	case RIGHT:
+		mouse_dx_ = +1;
+		mouse_dy_ = 0;
+		break;
+	case UP:
+		mouse_dx_ = 0;
+		mouse_dy_ = -1;
+		break;
+	case DOWN:
+		mouse_dx_ = 0;
+		mouse_dy_ = +1;
+		break;
 	}
 
 	// update mouse coordinates if move is possible
@@ -58,9 +77,9 @@ void Mouse::scamper(char k)
 	}
 }
 
-
-//void Mouse::position_in_middle_of_grid()
-//{
-//	x_ = SIZE / 2;
-//	y_ = SIZE / 2;
-//}
+void Mouse::reset()
+{
+	reset_position(rng_.get_random_value(SIZE), rng_.get_random_value(SIZE));
+	alive_ = true;
+	escaped_ = false;
+}

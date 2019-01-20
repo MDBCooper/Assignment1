@@ -19,7 +19,7 @@ class Underground
 	public:
 		Underground();
 		Hole get_hole_no(int no) const;
-		void set_hole_no_at_position(int no, int x, int y);
+
 		bool has_Mouse_reached_a_hole(const Mouse& mouse) const;
 		int find_hole_number_at_position(int x, int y) const;
 };

@@ -23,9 +23,10 @@ MoveableGridItem::MoveableGridItem(const char s, const int x, const int y)
 	 x_ += dx;
 	 y_ += dy;
  }
- int MoveableGridItem::reset_position(int x, int y)
+ void MoveableGridItem::reset_position(int x, int y)
  {
-	 return (x_ == x) && (y_ == y);
+	 x_ = x;
+	 y_ = y;
  }
  //void MoveableGridItem::set_x(int initx)
  //{

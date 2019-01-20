@@ -9,10 +9,12 @@ using namespace std;
 int main()
 {
 	UserInterface ui;
-	Game game;
+	Game game(&ui);
 
-	game.set_up(&ui);
-	game.run();
+	do
+	{
+		game.run();
+	} while (game.retry());
 
 	ui.hold_window();
 	return 0;

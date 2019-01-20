@@ -4,47 +4,47 @@
 #include <string>		// for string
 #include <sstream>		// for streamstring
 
-const void Game::set_up(UserInterface* pui)
+RandomNumberGenerator Game::rng_ = RandomNumberGenerator();
+
+Game::Game(UserInterface* pui) : p_ui(pui), player_(p_ui->get_Name())
 {
 	// set up the holes
-	underground_.set_hole_no_at_position(0, 4, 3);  //Move?
-	underground_.set_hole_no_at_position(1, 15, 10);  //Move? //Move?
-	underground_.set_hole_no_at_position(2, 7, 15); //Move?
+
 
 	// mouse state already set up in its contructor
 
 	// set up snake
-	//snake_.position_at_random();
 	snake_.spot_mouse(&mouse_);
 
 	// set up nut
-	nut_.mouse_location(&mouse_);
-
-	// set up the UserInterface
-	p_ui = pui;
+	//nut_.mouse_location(&mouse_);
+	mouse_.nut_location(&nut_);
 }
 
 const void Game::run()
 {
-	//assert(p_ui != nullptr);
+	assert(p_ui != nullptr);
+	int key_;
 
 	p_ui->draw_grid_on_screen(prepare_grid());
 	key_ = p_ui->get_keypress_from_user();
-
-	while (!has_ended(key_))
-	{
+	do {
+		cheat_mode(key_);
 		if (is_arrow_key_code(key_))
 		{
 			mouse_.scamper(key_);
-			snake_.chase_mouse();
+			if (!cheatModeActive_) {
+				snake_.chase_mouse();
+			}
 			p_ui->draw_grid_on_screen(prepare_grid());
 			apply_rules();
 		}
 
 		key_ = p_ui->get_keypress_from_user();
-	}
+	} while (!has_ended(key_));
 
 	p_ui->show_results_on_screen(prepare_end_message());
+	reset_game();
 }
 
 const string Game::prepare_grid()
@@ -63,21 +63,21 @@ const string Game::prepare_grid()
 			}
 			else
 			{
-				if ((row == snake_.get_Tail_y(0)) && (col == snake_.get_Tail_x(0)))
+				if ((row == snake_.snakeTail_.at(0).get_y()) && (col == snake_.snakeTail_.at(0).get_x()))
 				{
-					os << snake_.get_Tail_Symbol(0);
+					os << snake_.snakeTail_.at(0).get_symbol();
 				}
 				else
 				{
-					if ((row == snake_.get_Tail_y(1)) && (col == snake_.get_Tail_x(1)))
+					if ((row == snake_.snakeTail_.at(1).get_y()) && (col == snake_.snakeTail_.at(1).get_x()))
 					{
-						os << snake_.get_Tail_Symbol(1);
+						os << snake_.snakeTail_.at(1).get_symbol();
 					}
 					else
 					{
-						if ((row == snake_.get_Tail_y(2)) && (col == snake_.get_Tail_x(2)))
+						if ((row == snake_.snakeTail_.at(2).get_y()) && (col == snake_.snakeTail_.at(2).get_x()))
 						{
-							os << snake_.get_Tail_Symbol(2);
+							os << snake_.snakeTail_.at(2).get_symbol();
 						}
 						else
 						{
@@ -91,10 +91,10 @@ const string Game::prepare_grid()
 									os << nut_.get_symbol();
 								}
 								else {
-									const int hole_no(underground_.find_hole_number_at_position(col, row));  //Move?
+									const int hole_no(underground_.find_hole_number_at_position(col, row));
 
 									if (hole_no != -1)
-										os << underground_.get_hole_no(hole_no).get_symbol(); //Move?
+										os << underground_.get_hole_no(hole_no).get_symbol();
 									else
 										os << FREECELL;
 								}
@@ -106,7 +106,12 @@ const string Game::prepare_grid()
 		}
 		os << endl;
 	}
-
+	if (!cheatModeActive_) {
+		os << "\n\n\n\nPlayer: " << player_.get_name() << "\nScore: " << player_.get_score();
+	}
+	else {
+		os << "\n\n\n\nPlayer: " << player_.get_name() << "\nScore: " << player_.get_score() << "\n\nCHEAT MODE ACITVE!!!";
+	}
 	return os.str();
 }
 
@@ -115,20 +120,45 @@ const bool Game::is_arrow_key_code(int keycode)
 	return (keycode == LEFT) || (keycode == RIGHT) || (keycode == UP) || (keycode == DOWN);
 }
 
-
-
 const void Game::apply_rules()
 {
 	if (snake_.has_caught_mouse())
 	{
 		mouse_.die();
+		player_.update_score(-1);
 	}
 	else
 	{
-		nut_.has_been_collected();
-		if (underground_.has_Mouse_reached_a_hole(mouse_) && nut_.has_been_collected()) //Move?
+		mouse_.got_nut();
+		if (underground_.has_Mouse_reached_a_hole(mouse_) && nut_.has_been_collected())
 		{
-			mouse_.escape_into_hole(); //Move?
+			mouse_.escape_into_hole();
+			player_.update_score(1);
+		}
+		else if(underground_.has_Mouse_reached_a_hole(mouse_) && !nut_.has_been_collected()) {
+			switch (underground_.find_hole_number_at_position(mouse_.get_x(), mouse_.get_y()))
+			{
+			case (0):
+				if (rng_.get_random_value(2) == 1) 
+					mouse_.reset_position(underground_.get_hole_no(1).get_x(), underground_.get_hole_no(1).get_y());
+				else
+					mouse_.reset_position(underground_.get_hole_no(2).get_x(), underground_.get_hole_no(2).get_y());
+				break;
+			case (1):
+				if (rng_.get_random_value(2) == 1)
+					mouse_.reset_position(underground_.get_hole_no(0).get_x(), underground_.get_hole_no(0).get_y());
+				else
+					mouse_.reset_position(underground_.get_hole_no(2).get_x(), underground_.get_hole_no(2).get_y());
+				break;
+			case (2):
+				if (rng_.get_random_value(2) == 1)
+					mouse_.reset_position(underground_.get_hole_no(0).get_x(), underground_.get_hole_no(0).get_y());
+				else
+					mouse_.reset_position(underground_.get_hole_no(1).get_x(), underground_.get_hole_no(1).get_y());
+				break;
+			default:
+				break;
+			}
 		}
 	}
 }
@@ -138,7 +168,7 @@ const bool Game::has_ended(char key)
 	return ((key == 'Q') || (!mouse_.is_alive()) || (mouse_.has_escaped()));
 }
 
-const string Game::prepare_end_message()
+const string Game::prepare_end_message() const
 {
 	ostringstream os;
 	if (mouse_.has_escaped())
@@ -157,4 +187,28 @@ const string Game::prepare_end_message()
 		}
 	}
 	return os.str();
+}
+
+void Game::cheat_mode(char key) {
+	if (key == 'C') {
+		player_.has_cheated();
+		cheatModeActive_ = !cheatModeActive_;
+	}
+}
+
+bool Game::retry()
+{
+	cout << "\nRetry? (Y/N): ";
+	char temp;
+	cin >> temp;
+	return toupper(temp) == 'Y';
+}
+
+void Game::reset_game()
+{
+	snake_.reset();
+	mouse_.reset();
+	nut_.reset();
+	cheatModeActive_ = false;
+	player_.reset();
 }

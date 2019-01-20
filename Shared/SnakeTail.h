@@ -1,16 +1,13 @@
-#pragma once
-class SnakeTail
+#ifndef SnakeTailH
+#define SnakeTailH
+#include "MoveableGridItem.h"
+
+class SnakeTail : public MoveableGridItem
 {
 public:
-	SnakeTail();
 	SnakeTail(const char s, const int x, const int y);
 	~SnakeTail();
-	void updatePosition(int x, int y);
-	int get_x() const;
-	int get_y() const;
-	char get_symbol() const;
-private:
-	int x_, y_;
-	char symbol_;
+
 };
 
+#endif

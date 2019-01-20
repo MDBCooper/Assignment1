@@ -33,3 +33,11 @@ const void UserInterface::hold_window()
 	cout << "\n\n";
 	system("pause");
 }
+
+const string UserInterface::get_Name()
+{
+	string temp;
+	cout << "Please enter your name: ";
+	cin >> temp;
+	return temp;
+}

@@ -1,7 +1,4 @@
-#include "Constants.h"
-#include "Mouse.h"
 #include "Snake.h"
-#include "RandomNumberGenerator.h"
 RandomNumberGenerator Snake::rng_ = RandomNumberGenerator();
 const int MAXTailPieces = 3;
 
@@ -11,7 +8,6 @@ Snake::Snake(const char s, const int x, const int y)
 
 Snake::Snake() : MoveableGridItem(SNAKEHEAD, rng_.get_random_value(SIZE), rng_.get_random_value(SIZE))
 {
-	//position_at_random();
 	// make the pointer safe before the snake spots the mouse
 	p_mouse_ = nullptr;
 	SnakeTail t(SNAKETAIL, get_x(), get_y());
@@ -20,6 +16,7 @@ Snake::Snake() : MoveableGridItem(SNAKEHEAD, rng_.get_random_value(SIZE), rng_.g
 
 Snake::~Snake()
 {
+
 }
 
 bool Snake::has_caught_mouse() const
@@ -30,7 +27,7 @@ bool Snake::has_caught_mouse() const
 void Snake::spot_mouse(Mouse* p_mouse)
 {
 	// pre-condition: The mouse needs to exist 
-	//assert(p_mouse != nullptr);
+	assert(p_mouse != nullptr);
 
 	p_mouse_ = p_mouse;
 }
@@ -54,7 +51,9 @@ void Snake::set_direction(int& dx, int& dy)
 	// assume snake only move when necessary
 	dx = 0; dy = 0;
 
+
 	// update coordinate if necessary
+	
 	if (get_x() < p_mouse_->get_x())          // if snake on left of mouse
 		dx = 1;                          // snake should move right
 	else if (get_x() > p_mouse_->get_x())     // if snake on left of mouse
@@ -63,25 +62,26 @@ void Snake::set_direction(int& dx, int& dy)
 	if (get_y() < p_mouse_->get_y())          // if snake is above mouse
 		dy = 1;                          // snake should move down
 	else if (get_y() > p_mouse_->get_y())     // if snake is below mouse
-		dy = -1;						 // snake should move up
+		dy = -1;						// snake should move up
+	for (int i = 0; i <= 2; i++) {
+		if (get_x() + dx == snakeTail_.at(i).get_x())
+			dx = 0;
+		if (get_y() + dy == snakeTail_.at(i).get_y())
+			dy = 0;
+	}
+	
+}
+
+void Snake::reset()
+{
+	reset_position(rng_.get_random_value(SIZE), rng_.get_random_value(SIZE));
+	snakeTail_.at(0).reset_position(get_x(), get_y());
+	snakeTail_.at(1).reset_position(get_x(), get_y());
+	snakeTail_.at(2).reset_position(get_x(), get_y());
 }
 
 void Snake::move_Tail() {
-	int lastSnakeHeadPosX(get_x()), lastSnakeHeadPosY(get_y());
-	int lastSnakeTail1PosX(get_Tail_x(0)), lastSnakeTail1PosY(get_Tail_y(0));
-	int lastSnakeTail2PosX(get_Tail_x(1)), lastSnakeTail2PosY(get_Tail_y(1));
-	snakeTail_.at(0).updatePosition (lastSnakeHeadPosX, lastSnakeHeadPosY);
-	snakeTail_.at(1).updatePosition(lastSnakeTail1PosX, lastSnakeTail1PosY);
-	snakeTail_.at(2).updatePosition(lastSnakeTail2PosX, lastSnakeTail2PosY);
-}
-
-int Snake::get_Tail_y(int tailPiece) const {
-	return snakeTail_.at(tailPiece).get_y();
-}
-int Snake::get_Tail_x(int tailPiece) const {
-	return snakeTail_.at(tailPiece).get_x();
-}
-
-char Snake::get_Tail_Symbol(int tailPiece) const {
-	return snakeTail_.at(tailPiece).get_symbol();
+	snakeTail_.at(2).reset_position(snakeTail_.at(1).get_x(), snakeTail_.at(1).get_y());
+	snakeTail_.at(1).reset_position(snakeTail_.at(0).get_x(), snakeTail_.at(0).get_y());
+	snakeTail_.at(0).reset_position(get_x(), get_y());
 }

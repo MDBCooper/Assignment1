@@ -9,7 +9,7 @@ class Hole : public FixedGridItem
 {
 public:
 	Hole();
-	Hole(const char s, const int x, const int y);
+	Hole(const int x, const int y);
 };
 
 #endif

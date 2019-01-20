@@ -13,7 +13,7 @@ public:
 	int get_x();
 	int get_y();
 	bool is_at_position(int x, int y) const;
-	int reset_position(int x, int y);
+	void reset_position(int x, int y);
 	void update_position(int dx, int dy);
 
 	

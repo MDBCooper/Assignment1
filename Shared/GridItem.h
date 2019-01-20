@@ -7,7 +7,7 @@ private:
 	char symbol_;
 public:
 	GridItem(const char symbol);
-	char get_symbol();
+	char get_symbol() const;
 };
 
 #endif

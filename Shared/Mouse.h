@@ -2,35 +2,41 @@
 #define MouseH 
 
 #include "MoveableGridItem.h"
-#include "constants.h"
+#include "Constants.h"
+#include "Nut.h"
+#include "RandomNumberGenerator.h"
 
 class Mouse : public MoveableGridItem
 {
-	public:
-		// constructor
-		Mouse();
+private:
+	// data members
+	bool alive_;
+	bool escaped_;
+	Nut* p_nut_;
+	static RandomNumberGenerator rng_;
 
-		// assessors
-		const bool is_alive() const;
-		const bool has_escaped() const;
-		
+	// supporting functions
 
-		// mutators
-		void die();
-		void escape_into_hole(); //Move?
-		void scamper(char k);
+public:
+	// constructor
+	Mouse();
 
-		int  x_, y_;
+	// assessors
+	const bool is_alive() const;
+	const bool has_escaped() const;
 
-	private:
-		// data members
-		bool alive_;
-		bool escaped_;
-		int mouse_dx_;
-		int mouse_dy_;
 
-		// supporting functions 
-		
+	// mutators
+	void die();
+	void escape_into_hole();
+	void scamper(char k);
+
+	void reset();
+	void nut_location(Nut* p_nut);
+	//bool can_collect_nut();
+	bool got_nut();
+
+
 
 
 };
