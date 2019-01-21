@@ -1,3 +1,7 @@
+//Marcus Tryamane Kwame Angel-Whyte - 27010863
+//Joshua Wastnidge - 27018846
+//Matthew Cooper - 27014660
+
 #include "Snake.h"
 RandomNumberGenerator Snake::rng_ = RandomNumberGenerator();
 const int MAXTailPieces = 3;
@@ -10,7 +14,7 @@ Snake::Snake() : MoveableGridItem(SNAKEHEAD, rng_.get_random_value(SIZE), rng_.g
 {
 	// make the pointer safe before the snake spots the mouse
 	p_mouse_ = nullptr;
-	SnakeTail t(SNAKETAIL, get_x(), get_y());
+	SnakeTail t( get_x(), get_y());
 	snakeTail_.assign(MAXTailPieces, t);
 }
 
@@ -19,7 +23,7 @@ Snake::~Snake()
 
 }
 
-bool Snake::has_caught_mouse() const
+const bool Snake::has_caught_mouse() const
 {
 	return is_at_position(p_mouse_->get_x(), p_mouse_->get_y());
 }

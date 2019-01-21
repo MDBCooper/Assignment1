@@ -1,3 +1,7 @@
+//Marcus Tryamane Kwame Angel-Whyte - 27010863
+//Joshua Wastnidge - 27018846
+//Matthew Cooper - 27014660
+
 #include "Player.h"
 
 Player::Player(string name_) : name(name_), cheated(false)

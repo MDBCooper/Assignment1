@@ -1,15 +1,13 @@
+//Marcus Tryamane Kwame Angel-Whyte - 27010863
+//Joshua Wastnidge - 27018846
+//Matthew Cooper - 27014660
+
 #include "Nut.h"
 RandomNumberGenerator Nut::rng_ = RandomNumberGenerator();
 
-Nut::Nut() : MoveableGridItem(NUT, rng_.get_random_value(SIZE), rng_.get_random_value(SIZE)), collected_(false)
+Nut::Nut() : MoveableGridItem(NUT, rng_.get_random_value(SIZE - 3) + 1, rng_.get_random_value(SIZE - 3) + 1), collected_(false)
 {
-	if (get_x() == 1 || get_x() == SIZE) {
-		reset();
-	}
 
-	if (get_y() == 1 || get_y() == SIZE) {
-		reset();
-	}
 }
 
 
@@ -30,7 +28,7 @@ void Nut::reset()
 	collected_ = false;
 }
 
-bool Nut::boundary_check(int x, int y)
+const bool Nut::boundary_check(int x, int y)const
 {
 	if (x >= 1 && x <= SIZE && y >= 1 && y <= SIZE)
 	{
@@ -40,30 +38,23 @@ bool Nut::boundary_check(int x, int y)
 		return false;
 }
 
-bool Nut::mouse_near(int mouse_dx, int mouse_dy) {
-	if ((mouse_dx >= 1) && (mouse_dx <= -1) && (mouse_dy >= 1) && (mouse_dy <= -1))
+const bool Nut::mouse_near(int mouse_dx, int mouse_dy)const {
+	if (mouse_dx == get_x() & mouse_dy == get_y())
 		return true;
 	else
 		return false;
 }
 
-bool Nut::move(int mouse_x, int mouse_y)
+const bool Nut::move(int mouse_x, int mouse_y, int mouse_dx, int mouse_dy)
 {
-	int nut_x_ = (get_x() - mouse_x);
-	int nut_y_ = (get_y() - mouse_y);
+	int nut_dx_ = (get_x() - mouse_x);
+	int nut_dy_ = (get_y() - mouse_y);
 
-	if (mouse_near(nut_x_, nut_y_))
+	if (mouse_near(mouse_dx, mouse_dy))
 	{
-		if (boundary_check(nut_x_ * 2, nut_y_ * 2))
+		if (boundary_check(get_x() + (nut_dx_ * 2), get_y() + (nut_dy_ * 2)))
 		{
-			int nut_dx_ = nut_x_;
-			int nut_dy_ = nut_y_;
-			// update nut coordinates if move is possible
-			if (((get_x() + nut_dx_ * 2) >= 2) && ((get_x() + nut_dx_ * 2) <= SIZE - 1) && ((get_y() + nut_dy_ * 2) >= 2) && ((get_y() + nut_dy_ * 2) <= SIZE - 1))
-			{
-				update_position(nut_dx_, nut_dy_);
-				return true;
-			}
+			update_position(nut_dx_, nut_dy_);
 			return true;
 		}
 		else

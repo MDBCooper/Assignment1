@@ -1,3 +1,7 @@
+//Marcus Tryamane Kwame Angel-Whyte - 27010863
+//Joshua Wastnidge - 27018846
+//Matthew Cooper - 27014660
+
 #include <iostream>		// for output and input
 #include <string>		// for string
 #include <sstream>		// for streamstring

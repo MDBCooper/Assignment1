@@ -1,3 +1,7 @@
+//Marcus Tryamane Kwame Angel-Whyte - 27010863
+//Joshua Wastnidge - 27018846
+//Matthew Cooper - 27014660
+
 #include "MoveableGridItem.h"
 
 MoveableGridItem::MoveableGridItem(const char s, const int x, const int y)
@@ -5,34 +9,29 @@ MoveableGridItem::MoveableGridItem(const char s, const int x, const int y)
 
 }
 
- int MoveableGridItem::get_x()
+const int MoveableGridItem::get_x()const
 {
 	return x_;
 }
 
- int MoveableGridItem::get_y()
+ const int MoveableGridItem::get_y()const
 {
 	return y_;
 }
- bool MoveableGridItem::is_at_position(int x, int y) const
- {
-	 return (x_ == x) && (y_ == y);
- }
- void MoveableGridItem::update_position(int dx, int dy)
- {
-	 x_ += dx;
-	 y_ += dy;
- }
- void MoveableGridItem::reset_position(int x, int y)
- {
-	 x_ = x;
-	 y_ = y;
- }
- //void MoveableGridItem::set_x(int initx)
- //{
-	// x_ = initx;
- //}
- //void MoveableGridItem::set_y(int inity)
- //{
-	// y_ = inity;
- //}
+
+const bool MoveableGridItem::is_at_position(int x, int y) const
+{
+	return (x_ == x) && (y_ == y);
+}
+
+void MoveableGridItem::update_position(int dx, int dy)
+{
+	x_ += dx;
+	y_ += dy;
+}
+
+void MoveableGridItem::reset_position(int x, int y)
+{
+	x_ = x;
+	y_ = y;
+}

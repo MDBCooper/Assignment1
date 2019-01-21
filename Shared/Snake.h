@@ -1,3 +1,6 @@
+//Marcus Tryamane Kwame Angel-Whyte - 27010863
+//Joshua Wastnidge - 27018846
+//Matthew Cooper - 27014660
 
 #ifndef SnakeH
 #define SnakeH 
@@ -20,7 +23,7 @@ public:
 	Snake(const char s, const int x, const int y);
 	~Snake();
 	void reset();
-	bool has_caught_mouse() const;
+	const bool has_caught_mouse() const;
 	void spot_mouse(Mouse* p_mouse);
 	void chase_mouse();
 };

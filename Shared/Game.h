@@ -1,3 +1,7 @@
+//Marcus Tryamane Kwame Angel-Whyte - 27010863
+//Joshua Wastnidge - 27018846
+//Matthew Cooper - 27014660
+
 #ifndef GameH 
 #define GameH 
 
@@ -22,11 +26,11 @@ private:
 
 	const string prepare_grid();
 	const bool is_arrow_key_code(int keycode);
-	const void apply_rules();
+	void apply_rules();
 	void reset_game();
 	void cheat_mode(char);
 
-	const bool has_ended(char key);
+	const bool has_ended(char key) const;
 	const string prepare_end_message() const;
 	void Undo(char);
 	static RandomNumberGenerator rng_;
@@ -47,7 +51,8 @@ private:
 		bool MouseAlive;
 		bool MouseEscaped;
 		bool NutCollected;
-		bool Undone;
+		bool Undone = false;
+		bool Start = true;
 	};
 	UndoData undoData;
 public:

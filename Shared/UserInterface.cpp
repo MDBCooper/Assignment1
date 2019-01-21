@@ -1,3 +1,7 @@
+//Marcus Tryamane Kwame Angel-Whyte - 27010863
+//Joshua Wastnidge - 27018846
+//Matthew Cooper - 27014660
+
 #include <conio.h>	// for _getch()
 
 #include "UserInterface.h" 
@@ -15,7 +19,7 @@ int UserInterface::get_keypress_from_user() const
 	return(toupper(key_pressed));
 }
 
-const void UserInterface::draw_grid_on_screen(const string& grid_data) const
+void UserInterface::draw_grid_on_screen(const string& grid_data)
 {
 	// clear screen
 	system("cls");
@@ -23,7 +27,7 @@ const void UserInterface::draw_grid_on_screen(const string& grid_data) const
 	cout << grid_data;
 }
 
-const void UserInterface::show_results_on_screen(string message) const
+void UserInterface::show_results_on_screen(string message)
 {
 	cout << message;
 }

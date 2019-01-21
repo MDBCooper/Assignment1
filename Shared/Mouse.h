@@ -1,3 +1,7 @@
+//Marcus Tryamane Kwame Angel-Whyte - 27010863
+//Joshua Wastnidge - 27018846
+//Matthew Cooper - 27014660
+
 #ifndef MouseH 
 #define MouseH 
 
@@ -34,11 +38,6 @@ public:
 	void AssignEscaped(bool);
 	void reset();
 	void nut_location(Nut* p_nut);
-	void push_nut();
-	bool got_nut();
-
-
-
 
 };
 

@@ -1,3 +1,7 @@
+//Marcus Tryamane Kwame Angel-Whyte - 27010863
+//Joshua Wastnidge - 27018846
+//Matthew Cooper - 27014660
+
 #include "Mouse.h"
 RandomNumberGenerator Mouse::rng_ = RandomNumberGenerator();
 
@@ -19,20 +23,6 @@ const bool Mouse::has_escaped() const
 void Mouse::die()
 {
 	alive_ = false;
-}
-
-bool Mouse::got_nut() {
-	if (is_at_position(p_nut_->get_x(), p_nut_->get_y())) {
-		p_nut_->disappear();
-		return true;
-	}
-	return false;
-}
-
-void Mouse::push_nut()
-{
-	/*if (get_x() == p_nut_->get_x() && get_y == p_nut_->get_y)*/
-
 }
 
 void Mouse::escape_into_hole()
@@ -73,13 +63,13 @@ void Mouse::scamper(char k)
 	}
 
 	// update mouse coordinates if move is possible
-	if (((get_x() + mouse_dx_) >= 1) && ((get_x() + mouse_dx_) <= SIZE) && ((get_y() + mouse_dy_) >= 1) && ((get_y() + mouse_dy_) <= SIZE) && p_nut_->move(get_x(), get_y()))
+	if (((get_x() + mouse_dx_) >= 1) && ((get_x() + mouse_dx_) <= SIZE) && ((get_y() + mouse_dy_) >= 1) && ((get_y() + mouse_dy_) <= SIZE) &&
+		p_nut_->move(get_x(), get_y(), get_x() + mouse_dx_, get_y() + mouse_dy_))
 	{
 		update_position(mouse_dx_, mouse_dy_);
 	}
-
-	/*push_nut();*/
 }
+
 void Mouse::AssignAlive(bool alive) {
 	alive_ = alive;
 }

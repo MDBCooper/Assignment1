@@ -1,3 +1,7 @@
+//Marcus Tryamane Kwame Angel-Whyte - 27010863
+//Joshua Wastnidge - 27018846
+//Matthew Cooper - 27014660
+
 #ifndef MoveableGridItemH
 #define MoveableGridItemH
 
@@ -10,9 +14,9 @@ private:
 	int y_;
 public:
 	MoveableGridItem::MoveableGridItem(const char s, const int x, const int y);
-	int get_x();
-	int get_y();
-	bool is_at_position(int x, int y) const;
+	const int get_x() const;
+	const int get_y() const;
+	const bool is_at_position(int x, int y) const;
 	void reset_position(int x, int y);
 	void update_position(int dx, int dy);
 

@@ -1,3 +1,7 @@
+//Marcus Tryamane Kwame Angel-Whyte - 27010863
+//Joshua Wastnidge - 27018846
+//Matthew Cooper - 27014660
+
 #include "Game.h"
 #include <cassert>		// For Asserts
 #include <iostream>		// for output and input
@@ -8,9 +12,6 @@ RandomNumberGenerator Game::rng_ = RandomNumberGenerator();
 
 Game::Game(UserInterface* pui) : p_ui(pui), player_(p_ui->get_Name())
 {
-	// set up the holes
-	undoData.Undone = true;
-
 	// mouse state already set up in its contructor
 
 	// set up snake
@@ -41,6 +42,7 @@ const void Game::run()
 			apply_rules();
 		}
 		undoData.Undone = false;
+		undoData.Start = false;
 		key_ = p_ui->get_keypress_from_user();
 	} while (!has_ended(key_));
 
@@ -113,6 +115,13 @@ const string Game::prepare_grid()
 	else {
 		os << "\n\n\n\nPlayer: " << player_.get_name() << "\nScore: " << player_.get_score() << "\n\nCHEAT MODE ACITVE!!!";
 	}
+
+	if (!undoData.Undone) {
+		os << "";
+	}
+	else {
+		os << "\nMOVE UNDONE!!!";
+	}
 	return os.str();
 }
 
@@ -121,7 +130,7 @@ const bool Game::is_arrow_key_code(int keycode)
 	return (keycode == LEFT) || (keycode == RIGHT) || (keycode == UP) || (keycode == DOWN);
 }
 
-const void Game::apply_rules()
+void Game::apply_rules()
 {
 	if (snake_.has_caught_mouse())
 	{
@@ -130,7 +139,9 @@ const void Game::apply_rules()
 	}
 	else
 	{
-		mouse_.got_nut();
+		if (underground_.has_Nut_reached_a_hole(nut_))
+			nut_.disappear();
+
 		if (underground_.has_Mouse_reached_a_hole(mouse_) && nut_.has_been_collected())
 		{
 			mouse_.escape_into_hole();
@@ -164,7 +175,7 @@ const void Game::apply_rules()
 	}
 }
 
-const bool Game::has_ended(char key)
+const bool Game::has_ended(char key) const
 {
 	return ((key == 'Q') || (!mouse_.is_alive()) || (mouse_.has_escaped()));
 }
@@ -198,6 +209,20 @@ void Game::cheat_mode(char key) {
 }
 
 void Game::Undo(char key) {
+	
+	if (key == 'U' && !undoData.Undone && !undoData.Start) {
+		mouse_.reset_position(undoData.MouseX, undoData.MouseY);
+		mouse_.AssignAlive(undoData.MouseAlive);
+		mouse_.AssignEscaped(undoData.MouseEscaped);
+		snake_.reset_position(undoData.SnakeX, undoData.SnakeY);
+		snake_.snakeTail_.at(0).reset_position(undoData.Tail1X, undoData.Tail1Y);
+		snake_.snakeTail_.at(1).reset_position(undoData.Tail2X, undoData.Tail2Y);
+		snake_.snakeTail_.at(2).reset_position(undoData.Tail3X, undoData.Tail3Y);
+		nut_.reset_position(undoData.NutX, undoData.NutY);
+		nut_.AssignCollected(undoData.NutCollected);
+		undoData.Undone = true;
+		p_ui->draw_grid_on_screen(prepare_grid());
+	}
 	undoData.MouseX = mouse_.get_x();
 	undoData.MouseY = mouse_.get_y();
 	undoData.MouseAlive = mouse_.is_alive();
@@ -212,19 +237,8 @@ void Game::Undo(char key) {
 	undoData.Tail3Y = snake_.snakeTail_.at(2).get_y();
 	undoData.NutX = nut_.get_x();
 	undoData.NutY = nut_.get_y();
+
 	undoData.NutCollected = nut_.has_been_collected();
-	if (key == 'U' && !undoData.Undone) {
-		mouse_.reset_position(undoData.MouseX, undoData.MouseY);
-		mouse_.AssignAlive(undoData.MouseAlive);
-		mouse_.AssignEscaped(undoData.MouseEscaped);
-		snake_.reset_position(undoData.SnakeX, undoData.SnakeY);
-		snake_.snakeTail_.at(0).reset_position(undoData.Tail1X, undoData.Tail1Y);
-		snake_.snakeTail_.at(1).reset_position(undoData.Tail2X, undoData.Tail2Y);
-		snake_.snakeTail_.at(2).reset_position(undoData.Tail3X, undoData.Tail3Y);
-		nut_.reset_position(undoData.NutX, undoData.NutY);
-		nut_.AssignCollected(undoData.NutCollected);
-		undoData.Undone = true;
-	}
 }
 
 bool Game::retry()
@@ -241,5 +255,6 @@ void Game::reset_game()
 	mouse_.reset();
 	nut_.reset();
 	cheatModeActive_ = false;
+	undoData.Start = true;
 	player_.reset();
 }

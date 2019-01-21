@@ -1,3 +1,7 @@
+//Marcus Tryamane Kwame Angel-Whyte - 27010863
+//Joshua Wastnidge - 27018846
+//Matthew Cooper - 27014660
+
 #include "Underground.h"
 #include <cassert>
 
@@ -6,6 +10,7 @@ const int MAXHOLES(3);
 
 Underground::Underground() : holes_{ Hole(4,3), Hole(15,10), Hole(7,15)}
 {
+
 }
 
 Hole Underground::get_hole_no(int no) const
@@ -16,13 +21,12 @@ Hole Underground::get_hole_no(int no) const
 	return holes_.at(no);
 }
 
-
 bool Underground::is_valid_hole_number(int no) const
 {
 	return (no >= 0) && (no < holes_.size());
 }
 
-bool Underground::has_Mouse_reached_a_hole(const Mouse& mouse) const  //Move?
+const bool Underground::has_Mouse_reached_a_hole(const Mouse& mouse) const  //Move?
 {
 	for (int h_no(0); h_no < holes_.size(); ++h_no) //Move?
 	{
@@ -36,7 +40,23 @@ bool Underground::has_Mouse_reached_a_hole(const Mouse& mouse) const  //Move?
 
 	return false;
 }
-int Underground::find_hole_number_at_position(int x, int y) const
+
+const bool Underground::has_Nut_reached_a_hole(const Nut& nut) const
+{
+	for (int h_no(0); h_no < holes_.size(); ++h_no) //Move?
+	{
+		Hole h = get_hole_no(h_no); //Move?
+
+		if (nut.is_at_position(h.get_x(), h.get_y()))
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+const int Underground::find_hole_number_at_position(int x, int y) const
 {
 	for (int h_no(0); h_no < holes_.size(); ++h_no)  //Move?
 	{
