@@ -222,7 +222,7 @@ void Game::Undo(char key) {
 		snake_.snakeTail_.at(1).reset_position(undoData.Tail2X, undoData.Tail2Y);
 		snake_.snakeTail_.at(2).reset_position(undoData.Tail3X, undoData.Tail3Y);
 		nut_.reset_position(undoData.NutX, undoData.NutY);
-		nut_.AssignCollected = undoData.NutCollected;
+		nut_.AssignCollected(undoData.NutCollected);
 		undoData.Undone = true;
 	}
 }

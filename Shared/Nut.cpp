@@ -64,6 +64,7 @@ bool Nut::move(int mouse_x, int mouse_y)
 				update_position(nut_dx_, nut_dy_);
 				return true;
 			}
+			return true;
 		}
 		else
 		{
