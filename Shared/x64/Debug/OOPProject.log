@@ -1,3 +1,11 @@
-﻿  Snake.cpp
-  OOPProject.vcxproj -> C:\Users\b7014660\Source\Repos\Assignment1\Shared\x64\Debug\OOPProject.exe
-  OOPProject.vcxproj -> C:\Users\b7014660\Source\Repos\Assignment1\Shared\x64\Debug\OOPProject.pdb (Partial PDB)
+﻿  Game.cpp
+c:\users\b7010863\source\repos\assignment1\shared\game.h(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Main.cpp
+c:\users\b7010863\source\repos\assignment1\shared\game.h(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Mouse.cpp
+  Nut.cpp
+c:\users\b7010863\source\repos\assignment1\shared\nut.cpp(42): error C2065: 'k': undeclared identifier
+c:\users\b7010863\source\repos\assignment1\shared\nut.cpp(43): error C2050: switch expression not integral
+  Snake.cpp
+  Underground.cpp
+  Generating Code...

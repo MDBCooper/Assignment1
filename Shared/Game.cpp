@@ -9,7 +9,7 @@ RandomNumberGenerator Game::rng_ = RandomNumberGenerator();
 Game::Game(UserInterface* pui) : p_ui(pui), player_(p_ui->get_Name())
 {
 	// set up the holes
-
+	undoData.Undone = true;
 
 	// mouse state already set up in its contructor
 
@@ -29,6 +29,7 @@ const void Game::run()
 	p_ui->draw_grid_on_screen(prepare_grid());
 	key_ = p_ui->get_keypress_from_user();
 	do {
+		Undo(key_);
 		cheat_mode(key_);
 		if (is_arrow_key_code(key_))
 		{
@@ -39,7 +40,7 @@ const void Game::run()
 			p_ui->draw_grid_on_screen(prepare_grid());
 			apply_rules();
 		}
-
+		undoData.Undone = false;
 		key_ = p_ui->get_keypress_from_user();
 	} while (!has_ended(key_));
 
@@ -193,6 +194,36 @@ void Game::cheat_mode(char key) {
 	if (key == 'C') {
 		player_.has_cheated();
 		cheatModeActive_ = !cheatModeActive_;
+	}
+}
+
+void Game::Undo(char key) {
+	undoData.MouseX = mouse_.get_x();
+	undoData.MouseY = mouse_.get_y();
+	undoData.MouseAlive = mouse_.is_alive();
+	undoData.MouseEscaped = mouse_.has_escaped();
+	undoData.SnakeX = snake_.get_x();
+	undoData.SnakeY = snake_.get_y();
+	undoData.Tail1X = snake_.snakeTail_.at(0).get_x();
+	undoData.Tail1Y = snake_.snakeTail_.at(0).get_y();
+	undoData.Tail2X = snake_.snakeTail_.at(1).get_x();
+	undoData.Tail2Y = snake_.snakeTail_.at(1).get_y();
+	undoData.Tail3X = snake_.snakeTail_.at(2).get_x();
+	undoData.Tail3Y = snake_.snakeTail_.at(2).get_y();
+	undoData.NutX = nut_.get_x();
+	undoData.NutY = nut_.get_y();
+	undoData.NutCollected = nut_.has_been_collected();
+	if (key == 'U' && !undoData.Undone) {
+		mouse_.reset_position(undoData.MouseX, undoData.MouseY);
+		mouse_.AssignAlive(undoData.MouseAlive);
+		mouse_.AssignEscaped(undoData.MouseEscaped);
+		snake_.reset_position(undoData.SnakeX, undoData.SnakeY);
+		snake_.snakeTail_.at(0).reset_position(undoData.Tail1X, undoData.Tail1Y);
+		snake_.snakeTail_.at(1).reset_position(undoData.Tail2X, undoData.Tail2Y);
+		snake_.snakeTail_.at(2).reset_position(undoData.Tail3X, undoData.Tail3Y);
+		nut_.reset_position(undoData.NutX, undoData.NutY);
+		nut_.AssignCollected = undoData.NutCollected;
+		undoData.Undone = true;
 	}
 }
 

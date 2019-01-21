@@ -29,9 +29,11 @@ bool Mouse::got_nut() {
 	return false;
 }
 
-//bool Mouse::can_collect_nut() {
-//	
-//}
+void Mouse::push_nut()
+{
+	/*if (get_x() == p_nut_->get_x() && get_y == p_nut_->get_y)*/
+
+}
 
 void Mouse::escape_into_hole()
 {
@@ -71,12 +73,19 @@ void Mouse::scamper(char k)
 	}
 
 	// update mouse coordinates if move is possible
-	if (((get_x() + mouse_dx_) >= 1) && ((get_x() + mouse_dx_) <= SIZE) && ((get_y() + mouse_dy_) >= 1) && ((get_y() + mouse_dy_) <= SIZE))
+	if (((get_x() + mouse_dx_) >= 1) && ((get_x() + mouse_dx_) <= SIZE) && ((get_y() + mouse_dy_) >= 1) && ((get_y() + mouse_dy_) <= SIZE) && p_nut_->move(get_x(), get_y()))
 	{
 		update_position(mouse_dx_, mouse_dy_);
 	}
-}
 
+	/*push_nut();*/
+}
+void Mouse::AssignAlive(bool alive) {
+	alive_ = alive;
+}
+void Mouse::AssignEscaped(bool escaped) {
+	escaped_ = escaped;
+}
 void Mouse::reset()
 {
 	reset_position(rng_.get_random_value(SIZE), rng_.get_random_value(SIZE));

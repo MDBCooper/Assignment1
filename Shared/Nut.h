@@ -18,8 +18,12 @@ public:
 
 	//accessors
 	bool has_been_collected();
+	void AssignCollected(bool);
 	void disappear();
 	void reset();
+	bool mouse_near(int x, int y);
+	bool boundary_check(int x, int y);
+	bool move(int x, int y);
 };
 
 #endif 

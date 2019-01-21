@@ -28,8 +28,28 @@ private:
 
 	const bool has_ended(char key);
 	const string prepare_end_message() const;
-
+	void Undo(char);
 	static RandomNumberGenerator rng_;
+	struct UndoData
+	{
+		int MouseX;
+		int MouseY;
+		int SnakeX;
+		int SnakeY;
+		int Tail1X;
+		int Tail1Y;
+		int Tail2X;
+		int Tail2Y;
+		int Tail3X;
+		int Tail3Y;
+		int NutX;
+		int NutY;
+		bool MouseAlive;
+		bool MouseEscaped;
+		bool NutCollected;
+		bool Undone;
+	};
+	UndoData undoData;
 public:
 	Game(UserInterface*);
 	const void run();

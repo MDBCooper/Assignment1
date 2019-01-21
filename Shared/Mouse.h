@@ -30,10 +30,11 @@ public:
 	void die();
 	void escape_into_hole();
 	void scamper(char k);
-
+	void AssignAlive(bool);
+	void AssignEscaped(bool);
 	void reset();
 	void nut_location(Nut* p_nut);
-	//bool can_collect_nut();
+	void push_nut();
 	bool got_nut();
 
 
